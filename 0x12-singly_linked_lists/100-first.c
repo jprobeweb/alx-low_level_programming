@@ -1,17 +1,13 @@
-section .text
-global main
+#include <stdio.h>
 
-main:
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, msg
-	mov rdx, msglen
-	syscall
+void __attribute__((constructor)) hare(void);
 
-	mov rax, 60
-	mov rdi, 0
-	syscall
-
-section .rodata
-	msg: db "Hello, Holberton", 10
-	msglen: equ $ - msg
+/**
+ * hare - Prints a string before the
+ *        main function is executed.
+ */
+void hare(void)
+{
+	printf("You're beat! and yet, you must allow,\n"
+	       "I bore my house upon my back!\n");
+}
